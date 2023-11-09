@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Information</title>
+</head>
+<body>
+	  <h3 th:text="${price}"></h3>
+	  <h1>Products List</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Total Price</th>
+            <th>Discount</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.totleprice}"></td>
+            <td th:text="${product.discount}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                    <input type="hidden" name="name" th:value="${product.name}" />
+                    <input type="hidden" name="price" th:value="${product.price}" />
+					<input type="hidden" name="discount" th:value="${product.discount}" />
+                    <input type="hidden" name="totleprice" th:value="${product.totleprice}" />
+
+                    <a th:href="@{abc(id=${product.id})}">Pay Now</a>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+
+
